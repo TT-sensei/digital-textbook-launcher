@@ -1,0 +1,11 @@
+{
+  "name": "TT-sensei デジタル教科書ランチャー",
+  "short_name": "教科書ランチャー",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7fafc",
+  "theme_color": "#17324d",
+  "lang": "ja",
+  "description": "学校で使うデジタル教科書の公式ログイン先を教科ごとにまとめて開くランチャー"
+}

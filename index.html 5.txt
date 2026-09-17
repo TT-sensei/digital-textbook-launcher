@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#17324d">
+  <meta name="description" content="デジタル教科書の公式ログイン先を、ビューアごと・教科ごとに分かりやすく開くためのランチャー。">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="https://tt-sensei.github.io/edu-assets/assets/web/badges/common/mastery/badge.webp">
+  <link rel="stylesheet" href="https://tt-sensei.github.io/edu-effects/css/edu-effects.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./digital-textbook-enhancements.css">
+  <title>デジタル教科書ランチャー｜TT-sensei</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <a class="brand" href="../" aria-label="TT-sensei 学びのポータルへ戻る">
+        <span class="brand-mark" aria-hidden="true">T</span>
+        <span><strong>デジタル教科書</strong><small>LAUNCHER</small></span>
+      </a>
+      <div class="header-actions">
+        <button id="teacherModeButton" class="header-button" type="button" aria-pressed="false">登録</button>
+        <a class="header-link" href="../">ポータルへ</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="app-shell">
+    <section class="hero-panel edu-card deco-minimal" aria-labelledby="pageTitle">
+      <div class="hero-copy">
+        <p class="eyebrow">OFFICIAL LOGIN LAUNCHER</p>
+        <h1 id="pageTitle">ビューアをえらんで、教科書へ。</h1>
+        <p class="lead">学校で使うデジタル教科書を、ビューアごとにまとめています。どの教科がどこにあるかも、ここですぐ分かります。</p>
+      </div>
+      <div class="hero-navi" aria-hidden="true">
+        <img src="https://raw.githubusercontent.com/TT-sensei/navi-character-/main/assets/web/groups/learning/group-learning-pair-consulting.webp" alt="">
+      </div>
+    </section>
+
+    <section aria-labelledby="viewerTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">VIEWER FIRST</p>
+          <h2 id="viewerTitle">デジタル教科書の入口</h2>
+        </div>
+        <button id="addLinkButton" class="primary-button teacher-only" type="button">＋ 教科を登録</button>
+      </div>
+      <p class="section-note">上のビューアから公式サイトへ入り、その下で「どの教科がどこにあるか」を確認できます。</p>
+
+      <div id="viewerMap" class="viewer-map" aria-live="polite"></div>
+
+      <div id="emptyState" class="empty-state edu-card" hidden>
+        <div class="empty-icon" aria-hidden="true">＋</div>
+        <strong>まだ教科が登録されていません。</strong>
+        <p>「登録」から、使っている教科とビューアの組み合わせを登録してください。</p>
+        <button id="emptyAddButton" class="primary-button teacher-only" type="button">教科を登録する</button>
+      </div>
+    </section>
+
+    <section id="recentPanel" class="recent-panel" hidden aria-labelledby="recentTitle">
+      <div class="subsection-heading">
+        <div><span id="recentTitle">最近ひらいた教科</span><small>すぐに続きから</small></div>
+        <small id="recentText"></small>
+      </div>
+      <div id="recentGrid" class="recent-grid"></div>
+    </section>
+
+    <section class="notice edu-status edu-status-info" aria-label="大切なお知らせ">
+      <span class="notice-icon" aria-hidden="true">i</span>
+      <div>
+        <strong>このサイトは公式ログイン先へのランチャーです。</strong>
+        <p>ID・パスワードはこのサイトでは入力・保存しません。各ビューアの公式サイトでログインしてください。</p>
+      </div>
+    </section>
+
+    <section class="teacher-only teacher-panel edu-card" aria-labelledby="settingsTitle">
+      <div class="section-heading compact">
+        <div>
+          <p class="eyebrow">DEVICE SETTINGS</p>
+          <h2 id="settingsTitle">この端末の設定</h2>
+        </div>
+      </div>
+      <div class="teacher-settings-copy">教科の対応表はこの端末に保存されます。別の端末へ移すときは、設定を書き出してください。</div>
+      <div class="utility-grid">
+        <button id="exportButton" class="utility-button" type="button"><span>↓</span><span><strong>設定を書き出す</strong><small>バックアップ用JSON</small></span></button>
+        <button id="importButton" class="utility-button" type="button"><span>↑</span><span><strong>設定を読み込む</strong><small>バックアップJSONから復元</small></span></button>
+        <button id="resetButton" class="utility-button danger" type="button"><span>↺</span><span><strong>設定を初期化</strong><small>登録・お気に入り・履歴を消す</small></span></button>
+      </div>
+      <input id="importFile" type="file" accept="application/json,.json" hidden>
+    </section>
+
+    <footer class="app-footer">
+      <p>このページは公式ログイン先へのリンク集です。教材コンテンツ、アカウント情報はこのサイトでは扱いません。</p>
+      <div class="footer-links">
+        <a href="https://www.mext.go.jp/a_menu/shotou/kyoukasho/digital/data_00008.html" target="_blank" rel="noopener noreferrer">文部科学省・令和8年度案内 ↗</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/TT-sensei/learning-portal/tree/main/digital-textbook" target="_blank" rel="noopener noreferrer">このページのソース ↗</a>
+      </div>
+    </footer>
+  </main>
+
+  <dialog id="linkDialog" class="dialog">
+    <form id="linkForm" method="dialog" class="dialog-card">
+      <div class="dialog-header">
+        <div><p class="eyebrow">SUBJECT ENTRY</p><h2 id="dialogTitle">教科を登録</h2></div>
+        <button id="closeDialogButton" class="icon-button" type="button" aria-label="閉じる">×</button>
+      </div>
+      <input id="editingId" type="hidden">
+      <label class="field"><span>教科</span><select id="subjectInput" required><option value="">えらんでください</option><option>国語</option><option>算数</option><option>理科</option><option>社会</option><option>英語</option><option>音楽</option><option>図工</option><option>家庭</option><option>体育・保健</option><option>道徳</option><option>その他</option></select></label>
+      <label class="field"><span>教科書会社 <small>（任意）</small></span><input id="publisherInput" type="text" maxlength="40" placeholder="例：光村図書"></label>
+      <label class="field"><span>ビューア</span><select id="platformInput" required></select></label>
+      <label class="field"><span>表示名 <small>（任意）</small></span><input id="labelInput" type="text" maxlength="40" placeholder="例：国語　光村図書"></label>
+      <div id="customUrlWrap" class="field" hidden><span>ログインURL</span><input id="customUrlInput" type="url" inputmode="url" placeholder="https://..."></div>
+      <label class="check-field"><input id="favoriteInput" type="checkbox"><span>この教科を上の方に表示</span></label>
+      <p class="dialog-note">ログインURLは公式サイトへのリンクです。ID・パスワードは登録しないでください。</p>
+      <div class="dialog-actions">
+        <button id="deleteLinkButton" class="secondary-button danger teacher-only" type="button" hidden>削除</button>
+        <span></span>
+        <button id="cancelDialogButton" class="secondary-button" type="button">キャンセル</button>
+        <button class="primary-button" type="submit">保存する</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./app.js"></script>
+  <script src="./digital-textbook-enhancements.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>
