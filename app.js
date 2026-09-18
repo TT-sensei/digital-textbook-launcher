@@ -14,7 +14,7 @@ const PLATFORMS = {
 };
 
 const PLATFORM_ORDER = ['manaviewer', 'cho', 'lentrance', 'mirai', 'tsubasa', 'esviewer'];
-const SUBJECTS = ['国語','算数','理科','社会','英語','音楽','図工','家庭','体育・保健','道徳','その他'];
+const SUBJECTS = ['国語','算数','理科','社会','英語','音楽','図工','家庭','体育・保健','書写','道徳','その他'];
 
 let storage = null;
 let state = { links: [], recent: [] };
