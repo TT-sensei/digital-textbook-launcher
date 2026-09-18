@@ -1,6 +1,6 @@
 const STORAGE_NAMESPACE='digital-textbook-launcher';
 const STATE_KEY='state-v2';
-const SUBJECTS=['国語','算数','理科','社会','英語','音楽','図工','家庭','体育・保健','道徳','その他'];
+const SUBJECTS=['国語','算数','理科','社会','英語','音楽','図工','家庭','体育・保健','書写','道徳','その他'];
 const SITES={manaviewer:{name:'まなビューア',url:'https://manaviewer.jp/'},cho:{name:'超教科書',url:'https://p01.cloud.cho-textbook.jp/'},lentrance:{name:'Lentrance Reader',url:'https://www.lentrance.com/school/login'},mirai:{name:'みらいスクールプラットフォーム',url:'https://mirai-pf.jp/user/login.html'},tsubasa:{name:'つばさブック',url:'https://tsubasabook.jp/'},esviewer:{name:'エスビューア',url:'https://sviewer.jp/'},custom:{name:'その他の公式ログイン先',url:''}};
 const PUBLISHERS={'東京書籍':'lentrance','大日本図書':'tsubasa','光村図書出版':'manaviewer','光村図書':'manaviewer','開隆堂出版':'mirai','新興出版社啓林館':'cho','啓林館':'cho','数研出版':'esviewer','三省堂':'custom','学校図書':'custom','教育出版':'custom','日本文教出版':'custom'};
 let state={books:[],recent:[]},storage=null;const $=s=>document.querySelector(s);
