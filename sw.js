@@ -1,4 +1,4 @@
-const CACHE_NAME = "digital-textbook-launcher-v4";
+const CACHE_NAME = "digital-textbook-launcher-v5";
 const APP_SHELL = [
   "./",
   "./index.html",
